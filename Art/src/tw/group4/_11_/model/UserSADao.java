@@ -2,7 +2,11 @@ package tw.group4._11_.model;
 
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,6 +14,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+
+import tw.group4._35_.login.model.WebsiteMember;
 
 
 @Repository("UserSADao")
@@ -134,6 +140,18 @@ public class UserSADao {
 		return result;
 	}
 	
+	public DonateRecordBean insert(DonateRecordBean uBean) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(uBean);
+		return uBean;
+	}
+	
+	public UserSABean selectById(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		UserSABean uBean = session.get(UserSABean.class, id);
+		return uBean;
+	}
+	
 	public List<UserSABean> search(String word){
 		String sss = "%"+word+"%";
 		
@@ -163,5 +181,13 @@ public class UserSADao {
 			result.setSal_SA(a);
 		} 
 		return result;
+	}
+
+	public List<DonateRecordBean> showList(String name) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<DonateRecordBean> query = session.createQuery("From DonateRecordBean Where name_user =?0 ",DonateRecordBean.class);
+		query.setParameter(0, name);
+		List<DonateRecordBean> list = query.list();
+		return list;
 	}
 }

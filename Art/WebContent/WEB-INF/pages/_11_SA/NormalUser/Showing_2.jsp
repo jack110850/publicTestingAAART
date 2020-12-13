@@ -55,7 +55,30 @@ $(document).ready( function () {
 	</span>
 </form>
 </div>
-<!-- 研究jsp foreach 迴圈控制 -->
+<div>
+	
+	<select name="word">
+		<option value="臺北市">臺北市</option>
+		<option value="新北市">新北市</option>
+		<option value="桃園市">桃園市</option>
+		<option value="臺中市">臺中市</option>
+		<option value="臺南市">臺南市</option>
+		<option value="高雄市">高雄市</option>
+		<option value="新竹縣">新竹縣</option>
+		<option value="苗栗縣">苗栗縣</option>
+		<option value="彰化縣">彰化縣</option>
+		<option value="南投縣">南投縣</option>
+		<option value="雲林縣">雲林縣</option>
+		<option value="嘉義縣">嘉義縣</option>
+		<option value="屏東縣">屏東縣</option>
+		<option value="宜蘭縣">宜蘭縣</option>
+		<option value="花蓮縣">花蓮縣</option>
+		<option value="臺東縣">臺東縣</option>
+		<option value="澎湖縣">澎湖縣</option>
+		<option value="金門縣">金門縣</option>
+		<option value="連江縣">連江縣</option>
+	</select>
+</div>
  <section class="upcoming-event-area section-gap" id="events">
  	<div class="container">
  		<div class="row">
@@ -65,8 +88,8 @@ $(document).ready( function () {
 		 			<div class="col-lg-6 event-left" style="border-bottom: rgb(100,100,100) 1px solid; margin: auto; padding: 10px">
 			 			<div class="single-events">
 							<img class="img-fluid" src="data:image/jpg;base64, ${userView.pic2_SA}" alt="" width=450px height=450px;>
-							<a href="#"><h4>Street Artist</h4></a>
-							<h6><span>姓名：</span> ${userView.name_SA }</h6>
+							<a href='<c:url value="/ToWeb.ctrl?id_SA=${userView.id_SA}"/>'><h2>${userView.name_SA }</h2></a>
+							<h4>經常出沒於   ${userView.country_SA }</h4>
 							<p>
 								Somebody show their skill to other people in the street.
 							</p>
@@ -77,8 +100,8 @@ $(document).ready( function () {
  				<c:otherwise>
 					<div class="col-lg-6 event-right" style="border-bottom: rgb(100,100,100) 1px solid; margin: 0px; padding: 10px">
 						<div class="single-events">
-							<a href="#"><h4>Street Artist</h4></a>
-							<h6><span>姓名：</span> ${userView.name_SA }</h6>
+							<a href='<c:url value="/ToWeb.ctrl?id_SA=${userView.id_SA}"/>'><h2>${userView.name_SA }</h2></a>
+							<h4>經常出沒於   ${userView.country_SA }</h4>
 							<p>
 								Somebody show their skill to other people in the street.
 							</p>

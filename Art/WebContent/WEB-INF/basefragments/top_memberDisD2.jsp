@@ -75,7 +75,7 @@
 								<li><a href="<c:url value='/03/front/calendar/myCalendar.ctrl' />">行事曆管理</a></li>
 							</ul>
 						</li>
-						<li><a href="#">藝人聘用紀錄</a></li>
+						<li><a href="<c:url value='/showDonateList' />">藝人斗內紀錄</a></li>
 						<li><a href="#">課程購買紀錄</a></li>
 						<li><a href="#">我設計的旅程</a></li>
 					</ul>

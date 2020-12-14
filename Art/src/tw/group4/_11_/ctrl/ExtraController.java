@@ -85,10 +85,28 @@ public class ExtraController {
 				totlePages.add(i);
 			}
 			
+			List<Integer> first8Pages = new ArrayList<Integer>();
+			for (int i = 1; i <= 15; i++) {
+				first8Pages.add(i);
+			}
+			
+			List<Integer> middlePages = new ArrayList<Integer>();
+			for (int i = page-7; i <= page+7; i++) {
+				middlePages.add(i);
+			}
+			
+			List<Integer> last8Pages = new ArrayList<Integer>();
+			for (int i = totalPage-14 ; i <= totalPage; i++) {
+				last8Pages.add(i);
+			}
+			
 			m.addAttribute("BeanList_SA",list);
 			m.addAttribute("PageMum_SA",page);
 			m.addAttribute("totalPages_SA",totalPage);
 			m.addAttribute("allPages",totlePages);
+			m.addAttribute("first8Pages",first8Pages);
+			m.addAttribute("middlePages",middlePages);
+			m.addAttribute("last8Pages",last8Pages);
 		}
 		
 		return "_11_SA/NormalUser/Showing_2";
@@ -96,9 +114,24 @@ public class ExtraController {
 	
 	@Hibernate
 	@RequestMapping(path = "/searchSA2.ctrl",method = RequestMethod.POST)
-	public String searchSA(@RequestParam(name = "word") String searchSA, Model m) {
+	public String searchSA2(@RequestParam(name = "word") String searchSA, Model m) {
 		
 		List<UserSABean> list= uDAO.search(searchSA);
+		
+		m.addAttribute("reUBeanList_SA",list);
+		
+		return "_11_SA/NormalUser/UserReturn";
+	}
+	
+	@Hibernate
+	@RequestMapping(path = "/searchSA3.ctrl",method = RequestMethod.POST)
+	public String searchSA3(
+			@RequestParam(name = "country") String country,
+			@RequestParam(name = "classification") String classification,
+			@RequestParam(name = "theme") String theme,
+			Model m) {
+		
+		List<UserSABean> list = uDAO.search3(country, classification, theme);
 		
 		m.addAttribute("reUBeanList_SA",list);
 		

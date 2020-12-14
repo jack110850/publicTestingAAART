@@ -163,6 +163,72 @@ public class UserSADao {
 		return list;
 	}
 	
+	public List<UserSABean> search3(String country, String classification, String theme){
+		
+		Session session = sessionFactory.getCurrentSession();
+		String nullString = null;
+		
+		if (country.equals(nullString)) {
+			String a = "*";
+			if (classification.equals(nullString)) {
+				String b = "*";
+				if (theme.equals(nullString)) {
+					String c = null;
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA =" + a + b + c + "Order by ID_SA",UserSABean.class);
+					List<UserSABean> list = query.list();
+					return list;
+				} else {
+					String c = "theme_SA = "+theme;
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA =" + a + b + c + "Order by ID_SA",UserSABean.class);
+					List<UserSABean> list = query.list();
+					return list;
+				}
+			} else {
+				String b = "And classification_SA = "+classification;
+				if (theme.equals(nullString)) {
+					String c = null;
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA =" + a + b + c + "Order by ID_SA",UserSABean.class);
+					List<UserSABean> list = query.list();
+					return list;
+				} else {
+					String c = "And theme_SA = "+theme;
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA =" + a + b + c + "Order by ID_SA",UserSABean.class);
+					List<UserSABean> list = query.list();
+					return list;
+				}
+			}
+		}else {
+			String a = "country_SA = "+country;	
+			if (classification.equals(nullString)) {
+				String b = "*";
+				if (theme.equals(nullString)) {
+					String c = null;
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA =" + a + b + c + "Order by ID_SA",UserSABean.class);
+					List<UserSABean> list = query.list();
+					return list;
+				} else {
+					String c = "And theme_SA = "+theme;
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA =" + a + b + c + "Order by ID_SA",UserSABean.class);
+					List<UserSABean> list = query.list();
+					return list;
+				}
+			} else {
+				String b = "And classification_SA = "+classification;
+				if (theme.equals(nullString)) {
+					String c = null;
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA =" + a + b + c + "Order by ID_SA",UserSABean.class);
+					List<UserSABean> list = query.list();
+					return list;
+				} else {
+					String c = "And theme_SA = "+theme;
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA =" + a + b + c + "Order by ID_SA",UserSABean.class);
+					List<UserSABean> list = query.list();
+					return list;
+				}
+			}
+		}
+	}
+	
 	public List<UserSABean> searchID(int id){
 		Session session = sessionFactory.getCurrentSession();
 		Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE ID_SA =?0 ",UserSABean.class);

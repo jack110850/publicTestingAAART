@@ -120,6 +120,9 @@ public class UserSAService {
 		return uDao.showList(name);
 	}
 	
+	public List<DonateRecordBean> showAllDonateRecord(){
+		return uDao.showAllDonateRecord();
+	}
 //	public DonateRecordBean recordDonation(
 //			int id_SA , 
 //			int donate_SA , 

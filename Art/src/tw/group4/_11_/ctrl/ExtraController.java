@@ -28,9 +28,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tw.group4._11_.model.DonateRecordBean;
+import tw.group4._11_.model.GreenFromation;
+import tw.group4._11_.model.SentMailService;
 import tw.group4._11_.model.UserSABean;
 import tw.group4._11_.model.UserSADao;
 import tw.group4._11_.model.UserSAService;
+import tw.group4._14_.utils.ECPayment;
 import tw.group4._35_.login.model.WebsiteMember;
 import tw.group4._35_.login.model.WebsiteMemberService;
 import tw.group4.util.Hibernate;
@@ -44,6 +47,8 @@ public class ExtraController {
 	private UserSAService uService;
 	@Autowired
 	private WebsiteMemberService wDaoService;
+	@Autowired
+	private SentMailService smService;
 	
 	@Hibernate
 	@RequestMapping(path = "/userStreetArtistPage.ctrl" ,method = RequestMethod.GET)
@@ -134,6 +139,9 @@ public class ExtraController {
 		List<UserSABean> list = uDAO.search3(country, classification, theme);
 		
 		m.addAttribute("reUBeanList_SA",list);
+		m.addAttribute("country",country);
+		m.addAttribute("classification",classification);
+		m.addAttribute("theme",theme);
 		
 		return "_11_SA/NormalUser/UserReturn";
 	}
@@ -199,7 +207,7 @@ public class ExtraController {
 		
 		UserSABean beanSA = uDAO.selectById(idsa);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		
 		String name_SA = beanSA.getName_SA();
@@ -220,13 +228,25 @@ public class ExtraController {
 			record.setTime(donateTime);
 			
 			uService.insert(record);
+			
+//			寄送信件
+			smService.processSendMailSA(record);
+			
+//			綠界
+			GreenFromation payment = new GreenFromation();
+//			System.out.println("--------------"+donateTime);
+//			System.out.println("++++++++++++++++"+sal);
+			String greenCheckAll = payment.greenCheck(donateTime, sal);
+
+//			hSession.setAttribute("form", greenCheckAll);
+			m.addAttribute("form", greenCheckAll);
+//			return "_11_SA/NormalUser/Success";
+			return "_11_SA/NormalUser/NewFile";
 		} catch (Exception e) {
 			errors.put("msg", "請勿輸入數字以外的字串!!");
 			e.printStackTrace();
+			return "redirect:/userStreetArtistPage.ctrl";
 		}
-		
-		m.addAttribute("name","donate to streetartist!!");
-		return "_11_SA/NormalUser/Success";
 	}
 	
 	@Hibernate
@@ -251,6 +271,25 @@ public class ExtraController {
 		
 		m.addAttribute("donationList", list1);
 		return "_11_SA/NormalUser/ShowHisDonateRecord";
+	}
+	
+	@Hibernate
+	@RequestMapping(path ="/showDonateListForAdmin")
+	public String showDonateListForAdmin(
+			HttpSession hSession,
+			Model m) {
+		if (hSession == null) {
+			return "redirect:/userStreetArtistPage.ctrl";
+		}
+		
+		WebsiteMember mb = (WebsiteMember) hSession.getAttribute("member");
+		if (mb == null) {
+			return "redirect:/35/loginEntry";
+		}
+		List<DonateRecordBean> listAdminView = uService.showAllDonateRecord();
+		
+		m.addAttribute("donationList", listAdminView);
+		return "_11_SA/ShowAllDonateRecord";
 	}
 	
 //	@Hibernate

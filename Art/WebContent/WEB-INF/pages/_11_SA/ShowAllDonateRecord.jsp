@@ -34,14 +34,13 @@ $(document).ready( function () {
 </head>
 <body>
 <!-- 黑底起點 -->
-<c:forEach var="reUserView" varStatus="stat" items="${donationList}">
 <section class="banner-area relative" id="home">	
 	<div class="overlay overlay-bg"></div>
 	<div class="container">
 		<div class="row d-flex align-items-center justify-content-center">
 			<div class="about-content col-lg-12">
 				<h1 class="text-white">
-					這是  ${reUserView.name_user} 的捐獻紀錄
+					捐獻紀錄
 				</h1>
 				<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href='<c:url value="/userStreetArtistPage.ctrl"/>'> 總覽</a></p>
 			</div>											
@@ -62,6 +61,7 @@ $(document).ready( function () {
 			</tr>
 		</thead>
 		<tbody>
+			<c:forEach var="reUserView" varStatus="stat" items="${donationList}">
 			<tr>
 				<td style="text-align: center;">${reUserView.id_donation }</td>
 				<td style="text-align: center;">${reUserView.name_user }</td>
@@ -69,9 +69,9 @@ $(document).ready( function () {
 				<td style="text-align: center;">${reUserView.donate_sa }</td>
 				<td style="text-align: center;">${reUserView.time }</td>
 			</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 </div>
-</c:forEach>
 </body>
 </html>

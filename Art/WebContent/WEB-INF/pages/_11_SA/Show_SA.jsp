@@ -28,7 +28,7 @@ $(document).ready( function () {
 </script>
 </head>
 <div align="center">
-	<span> 
+	<span style="border: outset; background-color: rgb(239, 243, 11);margin: 1px;" > 
 		<a href="GoCreate.ctrl">新增</a>&nbsp;&nbsp; 
 		<a href="GoDel.ctrl">刪除</a>&nbsp;&nbsp;
 		<a href="GoSearch.ctrl">查詢</a>&nbsp;&nbsp; 
@@ -37,13 +37,13 @@ $(document).ready( function () {
 </div>
 <div>
 	<table id="table11" class="display">
-		<thead>
+		<thead class="table-hover">
 			<tr>
 				<th>編號</th>
-				<th>藝名</th>
-				<th>來自</th>
-				<th>表演項目</th>
-				<th>分類</th>
+				<th class="table-warning">藝名</th>
+				<th class="table-success">來自</th>
+				<th class="table-danger">表演項目</th>
+				<th class="table-info">分類</th>
 				<th>操作</th>
 			</tr>
 		</thead>

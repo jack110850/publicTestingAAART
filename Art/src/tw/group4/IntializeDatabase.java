@@ -22,6 +22,6 @@ public class IntializeDatabase {
 		new APTableReset().execute14();
 		new createTableCo().execute18();
 		new CreateTableInsertDataService().execute35();
-		System.out.println("所有表格已就緒");
+		System.out.println("本組所有表格已就緒");
 	}
 }

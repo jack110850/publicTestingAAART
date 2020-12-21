@@ -12,15 +12,15 @@ $(document).ready( function () {
 } );
 </script>
 </head>
-<div>
-	<span> 
+<div align="center">
+	<span style="border: outset; background-color: rgb(239, 243, 11);margin: 1px;" > 
 		<a href="GoCreate.ctrl">新增</a>&nbsp;&nbsp; 
 		<a href="GoDel.ctrl">刪除</a>&nbsp;&nbsp;
 		<a href="GoSearch.ctrl">查詢</a>&nbsp;&nbsp; 
 		<a href="myStreetArtistPage.ctrl">總覽</a>
 	</span>
 </div>
-	<table id="table_11" class="display">
+	<table id="table_11" class="display" style="background-color: rgb(73, 229, 240);border-radius: 25px;margin-top: 10px;">
 		<thead>
 			<tr>
 				<th>欲修改欄位</th>

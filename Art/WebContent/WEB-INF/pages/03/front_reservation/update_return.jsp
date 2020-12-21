@@ -11,11 +11,16 @@
 /* p, div { */
 
 /* } */
+.rs-symbol-color::after {
+	content: "*";
+	margin-left: 3px;
+	font-weight: 700;
+	color: rgb(203, 27, 69);
+}
 </style>
 
 </head>
 <body>
-
 	<!-- start banner Area -->
 	<section class="banner-area relative" id="home">
 		<div class="overlay overlay-bg"></div>
@@ -24,8 +29,10 @@
 				<div class="about-content col-lg-12">
 					<h1 class="text-white">AAART Shop</h1>
 					<p class="text-white link-nav">
-						<a href="index.html">Home </a> <span class="lnr lnr-arrow-right"></span>
-						<a href="<c:url value='/14/shopListController.ctrl' />"> Shop</a>
+						<a href="index.html">首頁 </a> <span class="lnr lnr-arrow-right"></span>
+						<a
+							href="<c:url value='/03/front/reservation/myReservation.ctrl' />">
+							得藝食堂訂位紀錄</a>
 					</p>
 				</div>
 			</div>
@@ -35,35 +42,64 @@
 	<div class="container">
 		<br>
 		<div class=title>
-			<h3 align="center" style="margin-top: 20px;">修改商店預約</h3>
+			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
+		</div>
+		<c:if test="${reservationUpdateMsg != null}">
+			<div class=title>
+				<h2 align="center" style="margin-top: 20px;">${reservationUpdateMsg}</h2>
+			</div>
+		</c:if>
+		<c:if test="${reservationErrorMsg != null}">
+			<div class=title>
+				<h3 align="center" style="margin-top: 20px;">系統錯誤，請重試</h3>
+			</div>
+		</c:if>
+		<!-- 圖片輪播區塊 -->
+		<br> <br> <br>
+		<div class=title>
+			<h2 align="center" style="margin-top: 20px;">嚴選食材、特製甜點</h2>
 		</div>
 		<br>
-		<div class="back" align="right">
-			<form action="<c:url value='/index.html'/> " method="get">
-				<div class="submitButton">
-					<input type="submit" class="" name="submit" value="返回 會員專區">
+		<!-- Start exibition Area -->
+		<div align="center">
+			<section class="exibition-area section-gap"
+				style="background-color: #FFFFFF; padding-top: 30px; padding-bottom: 30px;"
+				id="exhibitions">
+				<div class="container">
+					<div class="row">
+						<div class="active-exibition-carusel">
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/shabu01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/shabu02.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/fruit01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/fruit02.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/juice01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/dessert01.jpg'/>" alt="">
+							</div>
+						</div>
+					</div>
 				</div>
-			</form>
+			</section>
 		</div>
-		<br>
-		<div class=content>
-			<table id="03"
-				class="display table table-bordered table-hover table-blue">
-				<thead></thead>
-				<tbody>
-					<tr>
-						<td>
-							<div align="center" style="font-size: larger">${reservationUpdateMsg}</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<!-- End exibition Area -->
+		<!-- 輪播結束 -->
 	</div>
 </body>
+</html>
 <!-- ====================================================== -->
-<script>
-	$(document).ready(function() {
-		$('#03').DataTable({});
-	});
-</script>

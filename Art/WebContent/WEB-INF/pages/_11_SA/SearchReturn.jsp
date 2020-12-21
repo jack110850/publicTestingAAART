@@ -27,8 +27,8 @@ $(document).ready( function () {
 } );
 </script>
 </head>
-<div>
-	<span> 
+<div align="center">
+	<span style="border: outset; background-color: rgb(239, 243, 11);margin: 1px;" > 
 		<a href="GoCreate.ctrl">新增</a>&nbsp;&nbsp; 
 		<a href="GoDel.ctrl">刪除</a>&nbsp;&nbsp;
 		<a href="GoSearch.ctrl">查詢</a>&nbsp;&nbsp; 
@@ -58,7 +58,7 @@ $(document).ready( function () {
 				<td>
 					<form action="delSearch.ctrl" method="POST">
 						<input type="hidden" value="${reSearchSA.id_SA}"  name="id_SA"/>
-						<input type="submit" value="刪除" id="button-1"/>
+						<button id="delete" type="submit">刪除</button>
 					</form>
 					<form action="fixSA.ctrl" method="POST">
 						<input type="hidden" value="${reSearchSA.id_SA}"  name="id_SA"/>
@@ -69,3 +69,8 @@ $(document).ready( function () {
 			</c:forEach>
 		</tbody>
 	</table>
+	<script>
+		document.getElementById("delete").addEventListener("click",function(){
+		  swal("Seccess!", "已成功刪除", "success");
+		});
+	</script>

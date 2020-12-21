@@ -15,7 +15,6 @@
 
 </head>
 <body>
-
 	<!-- start banner Area -->
 	<section class="banner-area relative" id="home">
 		<div class="overlay overlay-bg"></div>
@@ -26,8 +25,8 @@
 					<p class="text-white link-nav">
 						<a href="index.html">首頁 </a> <span class="lnr lnr-arrow-right"></span>
 						<a
-							href="<c:url value='/03/front/reservation/chooseNumberAndDate' />">
-							食堂訂位</a>
+							href="<c:url value='/03/front/reservation/myReservation.ctrl' />">
+							得藝食堂訂位紀錄</a>
 					</p>
 				</div>
 			</div>
@@ -35,78 +34,141 @@
 	</section>
 	<!-- End banner Area -->
 	<div class="container">
-		<p>加上輪播圖片</p>
 		<br>
 		<div class=title>
-			<h3 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h3>
+			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
 		</div>
+		<p>加上輪播圖片</p>
 		<div class=title>
 			<h3 align="center" style="margin-top: 20px;">修改用餐人數</h3>
 		</div>
 		<br>
-		<div class=content>
+		<div class=title>
+			<h3 align="center" style="margin-top: 15px;">
+				您所預定的用餐時段&nbsp;<span style="color: #CB4042">${restaurant.year}年&nbsp;${restaurant.month}月&nbsp;${restaurant.day}日
+					&nbsp;${moment}&nbsp;</span>目前還剩下&nbsp;<span style="color: #CB4042">${remainingNum}個座位</span>
+			</h3>
+		</div>
+		<br>
+		<div class=content style="font-size: larger;">
 			<form method="post"
-				action="<c:url value="/03/front/reservation/update.ctrl"/>">
+				action="<c:url value="/03/front/reservation/updateAmountExecute.ctrl"/>">
 				<table id="03" class="display table table-hover table-blue">
 					<thead>
 						<tr class="head">
 							<th scope="col" colspan="4"
-								style="font-size: larger;">您所預定的用餐時段 &ensp;${moment}&ensp;目前還剩下${remainingNum}個座位</th>
+								style="font-size: larger; color: #0B1013; background-color: #FFF8D7"><div
+									align="center">您預定的用餐人數:&nbsp;
+									${reservation.adultsNum}位大人&nbsp;${reservation.childrenNum}位小孩</div></th>
 						</tr>
 						<tr class="head">
 							<th scope="col" colspan="4"
-								style="font-size: larger; background-color: #FAD689">修改用餐人數</th>
+								style="font-size: larger; color: #0B1013; background-color: #FAD689">新的用餐人數
+							</th>
 						</tr>
 					</thead>
-					<tfoot></tfoot>
 					<tbody>
 						<tr>
-							<td style="font-size: larger">請選擇大人人數:</td>
+							<td style="font-size: 22px; color: #0B1013;">請選擇大人人數:</td>
 							<td>
-							
-							
-							<select id="newAdultsNum" name="newAdultsNum"
-								required="required">
-									<option value="1">1位大人</option>
-									<option value="2">2位大人</option>
-									<option value="3">3位大人</option>
-									<option value="4">4位大人</option>
-									<option value="5">5位大人</option>
-							</select>
-							
-							
-							
+								<div class="row d-flex justify-content-center">
+									<div class="default-select">
+										<select id="newAdultsNum" name="newAdultsNum"
+											required="required">
+											<option value="1">1位大人</option>
+											<option value="2">2位大人</option>
+											<option value="3">3位大人</option>
+											<option value="4">4位大人</option>
+											<option value="5">5位大人</option>
+										</select>
+									</div>
+								</div>
 							</td>
-							<td style="font-size: larger">請選擇小孩人數:</td>
-							<td><select id="newChildrenNum" name="newChildrenNum"
-								required="required">
-									<option value="0">0位小孩</option>
-									<option value="1">1位小孩</option>
-									<option value="2">2位小孩</option>
-									<option value="3">3位小孩</option>
-									<option value="4">4位小孩</option>
-									<option value="5">5位小孩</option>
-							</select></td>
+							<td style="font-size: 22px; color: #0B1013;">請選擇小孩人數:</td>
+							<td>
+								<div class="row d-flex justify-content-center">
+									<div class="default-select">
+										<select id="newChildrenNum" name="newChildrenNum"
+											required="required">
+											<option value="0">0位小孩</option>
+											<option value="1">1位小孩</option>
+											<option value="2">2位小孩</option>
+											<option value="3">3位小孩</option>
+											<option value="4">4位小孩</option>
+											<option value="5">5位小孩</option>
+										</select>
+									</div>
+								</div>
+							</td>
 						</tr>
 					</tbody>
 				</table>
+				<div style="display: none">
+					<!-- 訂位單號的資訊 -->
+					<input type="hidden" name="reservationNo"
+						value="${reservation.reservationNo}">
+					<!-- 剩餘座位數與中文用餐時間 -->
+					<input type="hidden" name="moment" value="${moment}"> <input
+						type="hidden" name="remainingNum" value="${remainingNum}">
+				</div>
 				<br>
 				<div class="submitButton" align="center" style="font-size: larger">
 					<input type="submit" name="submit" value="修改用餐人數">
 				</div>
 				<br>
-				
-				
-				
-				
-				
 			</form>
 		</div>
+		
+		<!-- 圖片輪播區塊 -->
+		<br> <br> <br>
+		<div class=title>
+			<h2 align="center" style="margin-top: 20px;">嚴選食材、特製甜點</h2>
+		</div>
+		<br>
+		<!-- Start exibition Area -->
+		<div align="center">
+			<section class="exibition-area section-gap"
+				style="background-color: #FFFFFF; padding-top: 30px; padding-bottom: 30px;"
+				id="exhibitions">
+				<div class="container">
+					<div class="row">
+						<div class="active-exibition-carusel">
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/shabu01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/shabu02.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/fruit01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/fruit02.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/juice01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/dessert01.jpg'/>" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- End exibition Area -->
+		<!-- 輪播結束 -->
+
+
 	</div>
 </body>
 <!-- ====================================================== -->
 <script>
-	$(document).ready(function() {
-		$('#03').DataTable({});
-	});
+	
 </script>

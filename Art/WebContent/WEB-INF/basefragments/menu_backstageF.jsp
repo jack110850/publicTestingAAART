@@ -60,7 +60,7 @@
 		</div></li>
 
 	<!-- Nav Item - 一般功能 Menu -->
-<!-- 票務相關 -->
+	<!-- 票務相關 -->
 	<li class="nav-item"><a class="nav-link collapsed" href="#"
 		data-toggle="collapse" data-target="#collapsePages"
 		aria-expanded="true" aria-controls="collapsePages"> <i
@@ -71,17 +71,21 @@
 			<div class="bg-white py-2 collapse-inner rounded">
 				<div class="collapse-divider"></div>
 				<h6 class="collapse-header">活動修改:</h6>
-				<a class="collapse-item" href="<c:url value='/04/CMS/Category.ctrl?category=1' />">活動查詢</a>
+				<a class="collapse-item"
+					href="<c:url value='/04/CMS/Category.ctrl?category=1' />">活動查詢</a>
 				<a class="collapse-item" href="<c:url value='/04/CMS/insert'/>">活動新增</a>
-				<a class="collapse-item" href="<c:url value='/04/CMS/Category.ctrl?category=1' />">活動下架</a>
+				<a class="collapse-item"
+					href="<c:url value='/04/CMS/Category.ctrl?category=1' />">活動下架</a>
 				<h6 class="collapse-header">票務修改:</h6>
 				<a class="collapse-item"
 					href="<c:url value='/04/Cms/SearchOrder.ctrl' />">票券訂單查詢</a> <a
 					class="collapse-item"
 					href="<c:url value='/04/Cms/SearchOrder.ctrl' />">票券訂單刪除</a>
 				<h6 class="collapse-header">座位修改:</h6>
-				<a class="collapse-item" href="<c:url value='/04/CMS/Category.ctrl?category=1' />">活動座位查詢</a>
-				<a class="collapse-item" href="<c:url value='/04/CMS/Category.ctrl?category=1' />">座位修改</a>
+				<a class="collapse-item"
+					href="<c:url value='/04/CMS/Category.ctrl?category=1' />">活動座位查詢</a>
+				<a class="collapse-item"
+					href="<c:url value='/04/CMS/Category.ctrl?category=1' />">座位修改</a>
 			</div>
 		</div></li>
 
@@ -116,25 +120,23 @@
 			</div>
 		</div></li>
 
-	<!-- 預約服務 -->
+	<!-- 得藝食堂 -->
 	<li class="nav-item"><a class="nav-link collapsed" href="#"
 		data-toggle="collapse" data-target="#collapsePages3"
 		aria-expanded="true" aria-controls="collapsePages"> <i
-			class="fas fa-store"></i> <span>預約服務</span>
+			class="fas fa-store"></i> <span>得藝食堂服務</span>
 	</a>
 		<div id="collapsePages3" class="collapse"
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<div class="collapse-divider"></div>
-				<h6 class="collapse-header">商店預約:</h6>
+				<h6 class="collapse-header">營業相關設定:</h6>
 				<a class="collapse-item"
-					href="<c:url value='/03/cms/reservation/create'/>">預約商店</a> <a
-					class="collapse-item"
-					href="<c:url value='/03/cms/reservation/search'/>">查詢預約</a> <a
-					class="collapse-item"
-					href="<c:url value='/03/cms/reservation/update'/>">修改預約</a> <a
-					class="collapse-item"
-					href="<c:url value='/03/cms/reservation/delete'/>">刪除預約</a>
+					href="<c:url value='/03/cms/restaurant/restaurantManagement'/>">營業時間管理</a>
+				<div class="collapse-divider"></div>
+				<h6 class="collapse-header">訂位服務管理:</h6>
+				<a class="collapse-item"
+					href="<c:url value='/03/cms/reservation/reservationIndex.ctrl'/>">食堂訂位管理</a>
 			</div>
 		</div></li>
 
@@ -148,17 +150,14 @@
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<div class="collapse-divider"></div>
-				<h6 class="collapse-header">藝文商店資訊:</h6>
+				<h6 class="collapse-header">商店管理:</h6>
 				<a class="collapse-item"
-					href="<c:url value='/03/cms/shop/index.ctrl'/>">藝文商店管理</a> <a
-					class="collapse-item"
 					href="<c:url value='/03/cms/shop/createConfirm.ctrl'/>">上架藝文商店</a>
-				<div class="collapse-divider"></div>
-				<h6 class="collapse-header">商店行事曆:</h6>
 				<a class="collapse-item"
-					href="<c:url value='/03/cms/calendar/index.ctrl'/>">行事曆管理</a>
+					href="<c:url value='/03/cms/shop/index.ctrl'/>">藝文商店管理</a>
 			</div>
 		</div></li>
+
 
 	<!-- 吟遊詩人 -->
 	<li class="nav-item"><a class="nav-link collapsed" href="#"
@@ -213,13 +212,14 @@
 			</div>
 		</div></li>
 
-	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="#"> <i
+	<li class="nav-item"><a class="nav-link"
+		href="<c:url value='/14/showAltartCenterCRUD' />"> <i
 			class="fas fa-fw fa-table"></i> <span>訊息通知中心</span></a></li>
-			
+
 	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="#"> <i
-			class="fas fa-fw fa-chart-area"></i> <span>待開發</span></a></li>
+	<li class="nav-item"><a class="nav-link"
+		href="<c:url value='/35/chatRoomEntry' />"> <i
+			class="fas fa-fw fa-chart-area"></i> <span>客服中心</span></a></li>
 
 
 	<!-- Divider -->

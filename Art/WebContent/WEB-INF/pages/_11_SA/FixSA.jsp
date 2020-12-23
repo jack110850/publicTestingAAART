@@ -20,7 +20,7 @@ $(document).ready( function () {
 		<a href="myStreetArtistPage.ctrl">總覽</a>
 	</span>
 </div>
-	<table id="table_11" class="display" style="background-color: rgb(73, 229, 240);border-radius: 25px;margin-top: 10px;">
+	<table id="table_11" class="display" style="background-color: rgb(73, 229, 240);border-radius: 25px;margin-top: 10px;padding: 25px;">
 		<thead>
 			<tr>
 				<th>欲修改欄位</th>
@@ -46,23 +46,23 @@ $(document).ready( function () {
 			</c:forEach>
 		</tbody>
 	</table>
-	<table id="table_11" class="display">
+	<table id="table_11" class="display" style="background-color: rgb(73, 229, 240);margin-top: 10px;padding: 25px;">
 		<thead>
 			<tr>
-				<th>改成……</th>
+				<th colspan="5" align="center">改成……</th>
 			</tr>
 		</thead>
 		
 		<tbody>
-			<tr>
+			<tr class="title">
 				<th>編號</th>
 				<th>藝名</th>
 				<th>表演地區</th>
 				<th>表演項目</th>
 				<th>分類</th>
 			</tr>
-		<form action="fixingSA.ctrl" method="post">
 			<tr>
+				<form action="fixingSA.ctrl" method="post" id="fixData">
 				<c:forEach var="reFixSA" varStatus="stat" items="${WantToFix}">
 					<td>${reFixSA.id_SA }
 						<input type="hidden" value="${reFixSA.id_SA }" name="ID_SA">
@@ -102,11 +102,31 @@ $(document).ready( function () {
 							<option value="視覺藝術">視覺藝術</option>
 						</select>
 					</td>
+				</form>
 			</tr>
-			<tr>
-				<td colspan="5" align="center"><input type="submit" name="submit" value="確認修改">
-			</tr>
-		</form>
 		</tbody>
 	</table>
+	<button class="btn btn-outline-info" onclick="return fix()" id="submit">確認修改</button>
+<script>
+function fix() {
+	swal({
+			  title: "是否確認修改?",
+			  text: "修改前最後確認!",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((orderOK) => {
+				  if (orderOK) {
+					  swal("成功修改藝人資訊!", 
+						    	{icon: "success",});  
+					  setTimeout(function(){$("#fixData").submit(); });
+					 			
+				  } else {
+				    swal("操作已取消!");
+				  }
+				});
+		
+		}
+</script>
 </html>

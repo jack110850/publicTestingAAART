@@ -73,7 +73,7 @@
 						<li><a href="<c:url value='/04/SearchOrder.ctrl' />">票卷訂單紀錄</a></li>
 						<li><a href="<c:url value='/14/showOrderList.ctrl' />">洋行購物紀錄</a></li>
 							<li><a href="<c:url value='/03/front/reservation/myReservation.ctrl' />">食堂預約紀錄</a></li>
-						<li><a href="<c:url value='/showDonateList' />">藝人捐款紀錄</a></li>
+						<li><a href="<c:url value='/showDonateListForAdmin' />">藝人捐款紀錄</a></li>
 						<li><a href="<c:url value='/18/coOrderList.ctrl' />">課程購買紀錄</a></li>
 						<li><a href="<c:url value='/35/myJourneyEntry' />">我的旅程</a></li>
 					</ul>

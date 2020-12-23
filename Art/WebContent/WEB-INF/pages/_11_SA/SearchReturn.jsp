@@ -56,13 +56,14 @@ $(document).ready( function () {
 				<td>${reSearchSA.theme_SA }</td>
 				<td>${reSearchSA.classification_SA }</td>
 				<td>
-					<form action="delSearch.ctrl" method="POST">
+					<form action="delSearch.ctrl" method="POST" id="dataSA">
 						<input type="hidden" value="${reSearchSA.id_SA}"  name="id_SA"/>
-						<button id="delete" type="submit">刪除</button>
 					</form>
+					<input type="button" id="submit" class="btn btn-outline-info" value="刪除" onclick="return deleteSA()">
+					
 					<form action="fixSA.ctrl" method="POST">
 						<input type="hidden" value="${reSearchSA.id_SA}"  name="id_SA"/>
-						<input type="submit" value="修改" id="button-2"/>
+						<input type="submit" class="btn btn-outline-info" value="修改" id="button-2"/>
 					</form>
 				</td>
 			</tr>
@@ -70,7 +71,24 @@ $(document).ready( function () {
 		</tbody>
 	</table>
 	<script>
-		document.getElementById("delete").addEventListener("click",function(){
-		  swal("Seccess!", "已成功刪除", "success");
-		});
+	function deleteSA() {
+		swal({
+				  title: "是否確認刪除?",
+				  text: "刪除前最後確認!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((orderOK) => {
+					  if (orderOK) {
+						  swal("刪除藝人成功!", 
+							    	{icon: "success",});  
+						  setTimeout(function(){$("#dataSA").submit(); });
+						 			
+					  } else {
+					    swal("操作已取消!");
+					  }
+					});
+			
+			}
 	</script>
